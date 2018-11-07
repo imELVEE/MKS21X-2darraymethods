@@ -3,7 +3,7 @@ public class ArrayMethods{
   private static int sum(int[] ary){
     int ans = 0;
     for (int i = 0 ; i < ary.length ; i++){
-      if ((Integer)ary[i] == null)
+      if (ary[i] == 0)
         ans += 0;
       else
         ans += ary[i];
@@ -12,10 +12,12 @@ public class ArrayMethods{
   }
 
   public static int rowSum(int[][] ary, int x){
-    return sum(ary[x]);
+    if (x < ary.length)
+      return sum(ary[x]);
+    return 0;
   }
 
-  private static int[][] colConvert(int[][] ary){
+  public static int[][] colConvert(int[][] ary){
     int[][] ans = new int[0][0];
     for (int i = 0 ; i < ary.length ; i++){
       if (ary[i].length > ans.length)
@@ -31,7 +33,9 @@ public class ArrayMethods{
   }
 
   public static int columnSum(int[][] ary, int x){
-    return rowSum(colConvert(ary), x);
+    if (x < colConvert(ary).length)
+      return rowSum(colConvert(ary), x);
+    return 0;
   }
 
   public static int[] allRowSums(int[][] ary){
